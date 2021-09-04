@@ -1,4 +1,4 @@
-# Firt-C--Program
+# Firt C++ Program
 
 (C)Copyright Oğuzhan DUYAR 2021. 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg)
