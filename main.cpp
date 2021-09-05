@@ -1,15 +1,16 @@
-﻿
-#ifdef _WIN32
+﻿#include "myfunctions.h"
 #include <iostream>
-#include <windows.h>
 #include <stdio.h>
 #include <locale.h>
+
+
+
+#ifdef WIN32
+#include <windows.h>
 #endif
 
 #ifdef linux
-#include <iostream>
-#include <stdio.h>
-#include <locale.h>
+
 #endif
 using namespace std;
 
@@ -21,7 +22,7 @@ int main()
     setlocale(LC_ALL, "Turkish");
 
     //Sistem color
-#ifdef _WIN32
+#ifdef WIN32
 
     setlocale(LC_ALL, "tr-TR");
 #endif
@@ -38,7 +39,7 @@ int main()
         char secim;
 
 
-        cout << endl << endl << "******* Programlar ************ " << endl << "a. Toplama Aracı" << endl << "b. Pozitif-Negatif Oranları Hesaplayıcı" << endl << "c. Çarpım Tablosu" << endl << "d. Baklava dilimi çizme aracı" << endl << endl << "Program seçiniz? (Programı kapatmak için 'q' giriniz.)" << endl;
+        cout << endl << endl << "******* Programlar ************ " << endl << "a. Toplama Aracı" << endl << "b. Pozitif-Negatif Oranları Hesaplayıcı" << endl << "c. Çarpım Tablosu" << endl << "d. Baklava dilimi çizme aracı" << endl << "e. Harf pramiti araci" << endl << "f. Fonksiyon alma aracı." << endl << "Program seçiniz? (Programı kapatmak için 'q' giriniz.)" << endl;
         cin >> secim;
 
 
@@ -46,7 +47,7 @@ int main()
         {
             break;
         }
-#ifdef _WIN32
+#ifdef WIN32
         system("cls");
 #endif
 
@@ -55,7 +56,7 @@ int main()
 #endif
 
 
-        if (secim == 'a')
+        if (secim == 'a' || secim == 'A')
         {
             int tatoplam = 0;
             int tasayi = 0;
@@ -82,7 +83,7 @@ int main()
             {
                 break;
             }
-#ifdef _WIN32
+#ifdef WIN32
             system("cls");
 #endif
 
@@ -91,7 +92,7 @@ int main()
 #endif
 
         }
-        else if (secim == 'b') {
+        else if (secim == 'b' || secim == 'B') {
 
             int bn;
             cout << "Lütfen Kaç sayı hesaplayacağınızı giriniz." << endl;
@@ -122,7 +123,7 @@ int main()
             {
                 break;
             }
-#ifdef _WIN32
+#ifdef WIN32
             system("cls");
 #endif
 
@@ -131,7 +132,7 @@ int main()
 #endif
         }
 
-        else if (secim == 'c') {
+        else if (secim == 'c' || secim == 'C') {
             cout << "--- Çarpım Tablosu ---" << endl;
 
             for (int i = 1; i < 11; i++)
@@ -149,7 +150,7 @@ int main()
             {
                 break;
             }
-#ifdef _WIN32
+#ifdef WIN32
             system("cls");
 #endif
 
@@ -161,7 +162,7 @@ int main()
 
 
         }
-        else if (secim == 'd')
+        else if (secim == 'd' || secim == 'D')
         {
             cout << "Baklava diliminin boyutunu giriniz." << endl;
 
@@ -211,7 +212,7 @@ int main()
             {
                 break;
             }
-#ifdef _WIN32
+#ifdef WIN32
             system("cls");
 #endif
 
@@ -221,6 +222,73 @@ int main()
 
 
         }
+        else if (secim=='e' || secim == 'E')
+    {
+    cout << "Lütfen bir büyük harf giriniz." << endl;
+    char dg;
+    cin >> dg;
+    
+    for (int i = dg-65 ; i < 26; i++)
+    {
+        for (int j = dg-65; j <= i; j++)
+        {
+            cout << (char)(j + dg);
+        }
+        for (int j = i-1; j >=dg-65; j--)
+        {
+            cout << (char)(j + 65);
+        }
+
+
+        
+
+        cout << endl;
+
+
+
+    }
+
+    cout << endl << "Programdan çıkılsınmı? (E/H) :";
+    cin >> exit;
+    if (exit == 'e' || exit == 'E')
+    {
+        break;
+    }
+#ifdef WIN32
+    system("cls");
+#endif
+
+#ifdef linux
+    system("clear");
+#endif
+
+        
+
+    }
+
+        else if (secim =='f' || secim == 'F')
+    {
+
+    int fsayi;
+    cout << "Fonksiyonunu almak istediğiniz sayiyı giriniz:";
+    cin >> fsayi;
+    cout << endl << fsayi << " Sayısının fonksiyonu eşittir:" << fonksiyon(fsayi) << endl;
+    cout << endl << "Programdan çıkılsınmı? (E/H) :";
+    cin >> exit;
+    if (exit == 'e' || exit == 'E')
+    {
+        break;
+    }
+#ifdef WIN32
+    system("cls");
+#endif
+
+#ifdef linux
+    system("clear");
+#endif
+    }
+
+
 
 
 
