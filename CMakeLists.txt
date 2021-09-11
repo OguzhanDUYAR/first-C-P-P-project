@@ -1,11 +1,6 @@
-﻿# CMakeList.txt: first C ++ project için CMake projesi, kaynağı ekleyin ve tanımlayın
-# projeye özgü mantık burada bulunur.
-#
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required(VERSION 3.0)
+project(C_p_p_myproject)
 
-project ("first C ++ project")
+set(CMAKE_CXX_STANDARD 23)
 
-# Kaynağı bu projenin yürütülebilir dosyasına ekleyin.
-add_executable (CMakeTarget "main.cpp"  "myfunctions.h")
-
-# TODO: Gerekirse testleri ve yükleme hedeflerini ekleyin.
+add_executable(C_p_p_myproject main.cpp)

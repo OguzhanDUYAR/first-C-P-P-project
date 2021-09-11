@@ -1,7 +1,7 @@
 ﻿#include "myfunctions.h"
 #include <iostream>
-#include <stdio.h>
-#include <locale.h>
+#include <clocale>
+#include <cmath>
 
 
 
@@ -21,11 +21,7 @@ int main()
     char exit;
     setlocale(LC_ALL, "Turkish");
 
-    //Sistem color
-#ifdef WIN32
 
-    setlocale(LC_ALL, "tr-TR");
-#endif
 
 
 
@@ -39,7 +35,7 @@ int main()
         char secim;
 
 
-        cout << endl << endl << "******* Programlar ************ " << endl << "a. Toplama Aracı" << endl << "b. Pozitif-Negatif Oranları Hesaplayıcı" << endl << "c. Çarpım Tablosu" << endl << "d. Baklava dilimi çizme aracı" << endl << "e. Harf pramiti araci" << endl << "f. Fonksiyon alma aracı." << endl << "Program seçiniz? (Programı kapatmak için 'q' giriniz.)" << endl;
+        cout << endl << endl << "******* Programlar ************ " << endl << "a. Toplama Aracı" << endl << "b. Pozitif-Negatif Oranları Hesaplayıcı" << endl << "c. Çarpım Tablosu" << endl << "d. Baklava dilimi çizme aracı" << endl << "e. Harf pramiti araci" << endl << "g. Mersenne hesaplama" << endl << "f. Faktöriyel alma aracı." << endl << "h. Rasgele sayı." << endl << "j. Toplu hesaplama aracı." << endl << endl << "Program seçiniz? (Programı kapatmak için 'q' giriniz.)" << endl;
         cin >> secim;
 
 
@@ -270,9 +266,9 @@ int main()
     {
 
     int fsayi;
-    cout << "Fonksiyonunu almak istediğiniz sayiyı giriniz:";
+    cout << "Faktöriyelini almak istediğiniz sayiyı giriniz:";
     cin >> fsayi;
-    cout << endl << fsayi << " Sayısının fonksiyonu eşittir:" << fonksiyon(fsayi) << endl;
+    cout << endl << fsayi << " Sayısının Faktöriyeli eşittir:" << factorialr(fsayi) << endl;
     cout << endl << "Programdan çıkılsınmı? (E/H) :";
     cin >> exit;
     if (exit == 'e' || exit == 'E')
@@ -288,8 +284,111 @@ int main()
 #endif
     }
 
+        else if (secim == 'g' || secim == 'G')
+    {
+    cout << "Mersenne sayısını hesaplamak için değer giriniz:";
+    int gg;
+    cin >> gg;
+    for (int i = 1; i <= gg; i++)
+    {
+        cout << ust(2, i)-1 << endl;
+    }
+    cout << endl << "Programdan çıkılsınmı? (E/H) :";
+    cin >> exit;
+    if (exit == 'e' || exit == 'E')
+    {
+        break;
+    }
+#ifdef WIN32
+    system("cls");
+#endif
+
+#ifdef linux
+    system("clear");
+#endif
 
 
+    }
+    else if (secim == 'h' || secim == 'H'){
+
+        int rng;
+        srand(time(NULL));
+        rng= rand()%6+1;
+        cout << "Zar =" << rng << endl;
+        rng =rand()%2;
+        if (rng == 1)
+            cout << "Yazı tura sonucu = TURA." << endl;
+        else
+            cout << "Yazı tura sonucu = YAZI." << endl;
+        rng=rand()%100;
+            cout << "0-100 arası rasgele sayı ="<<rng << endl;
+            cout << endl << "Programdan çıkılsınmı? (E/H) :";
+            cin >> exit;
+            if (exit == 'e' || exit == 'E')
+            {
+                break;
+            }
+#ifdef WIN32
+            system("cls");
+#endif
+
+#ifdef linux
+            system("clear");
+#endif
+
+
+    }
+        else if(secim == 'j' || secim == 'J'){
+            int n=0;
+            cout << "Kaç sayı hesaplanacağını girin :" ;
+            cin >> n;
+            int a[n];
+            cout << "Hesaplanacak sayıları girin." <<  endl;
+            for(int i=0;i<n;i++){
+                cin >> a[i];
+            }
+            // en büyük
+            int eb = a[0];
+            for(int i=1;i<n;i++){
+                if(a[i]>eb){
+                    eb = a[i];
+                }
+            }
+            cout << "En büyük sayı: " << eb << endl;
+            // en küçük
+            int ek=a[0];
+            for(int i=1;i<n;i++){
+                if(a[i]<ek){
+                    ek = a[i];
+                }
+            }
+            cout << "En küçük sayı: " << ek << endl;
+            int toplam =0;
+            long carpim =1;
+            for(int i=0;i<n;i++){
+                toplam += a[i];
+                carpim *= a[i];
+            }
+            cout << "Toplamı : "  << toplam << endl;
+            cout << "Çarpımı : "  << carpim << endl;
+            cout << "Aritmetik ortalaması: "<< (float)toplam/n << endl;
+            cout << "Geometrik ortalaması: "<< pow(carpim,(float)1/n) << endl;
+            cout << endl << "Programdan çıkılsınmı? (E/H) :";
+            cin >> exit;
+            if (exit == 'e' || exit == 'E')
+            {
+                break;
+            }
+            #ifdef WIN32
+                        system("cls");
+            #endif
+
+            #ifdef linux
+                        system("clear");
+            #endif
+
+
+        }
 
 
         // yeni program alanı
