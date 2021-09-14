@@ -31,3 +31,7 @@ int ust(int t, int u) {
 
 
 }
+
+int f (int *p) {
+    *p=10;
+}
