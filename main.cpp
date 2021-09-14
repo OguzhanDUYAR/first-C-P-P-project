@@ -2,7 +2,7 @@
 #include <iostream>
 #include <clocale>
 #include <cmath>
-
+#include <fstream>
 
 
 #ifdef WIN32
@@ -35,7 +35,7 @@ int main()
         char secim;
 
 
-        cout << endl << endl << "******* Programlar ************ " << endl << "a. Toplama Aracı" << endl << "b. Pozitif-Negatif Oranları Hesaplayıcı" << endl << "c. Çarpım Tablosu" << endl << "d. Baklava dilimi çizme aracı" << endl << "e. Harf pramiti araci" << endl << "g. Mersenne hesaplama" << endl << "f. Faktöriyel alma aracı." << endl << "h. Rasgele sayı." << endl << "j. Toplu hesaplama aracı." << endl << endl << "Program seçiniz? (Programı kapatmak için 'q' giriniz.)" << endl;
+        cout << endl << endl << "******* Programlar ************ " << endl << "a. Toplama Aracı" << endl << "b. Pozitif-Negatif Oranları Hesaplayıcı" << endl << "c. Çarpım Tablosu" << endl << "d. Baklava dilimi çizme aracı" << endl << "e. Harf pramiti araci" << endl << "g. Mersenne hesaplama" << endl << "f. Faktöriyel alma aracı." << endl << "h. Rasgele sayı." << endl << "j. Toplu hesaplama aracı." << endl << "k. Transpose işlemi" << endl << "l. Pointer örnekleri" << endl << "m. String örnekleri" << endl << "n. Dosya işlemleri " << endl << endl << "Program seçiniz? (Programı kapatmak için 'q' giriniz.)" << endl;
         cin >> secim;
 
 
@@ -389,6 +389,254 @@ int main()
 
 
         }
+        else if (secim =='k'||secim=='K'){
+            cout << "----Transpose Alma----" << endl;
+            int a[3][3]={1,2,3,4,5,6,7,8,9};
+
+            for(int i =0;i<3;i++){
+                for(int j=0;j<3;j++){
+                    cout << " "<< a[i][j];
+                }
+                cout << endl;
+            }
+            cout << "----Transpose işlemi----" << endl;
+            // transpose alma burada yapılıyor
+            for (int i=0;i<3;i++){
+                for (int j = i+1;j<3;j++){
+                    int g= a[j][i];
+                    a[j][i] = a[i][j];
+                    a[i][j]=g;
+                    //swap
+                }
+            }
+            // transpose bastırma
+            for (int i=0;i<3;i++){
+                for(int j=0;j<3;j++){
+                    cout << " " << a[i][j];
+                }
+                cout << endl;
+            }
+            cout << endl << "Programdan çıkılsınmı? (E/H) :";
+            cin >> exit;
+            if (exit == 'e' || exit == 'E')
+            {
+                break;
+            }
+            #ifdef WIN32
+                        system("cls");
+            #endif
+
+            #ifdef linux
+                        system("clear");
+            #endif
+
+
+
+        }
+        else if(secim=='l'||secim=='L'){
+
+            cout << "gostericiler - pointers" << endl;
+
+            int a= 10;
+            int *pp; //pp'nin gösterdiği yerdeki değer
+            pp= &a; //pp, a'nı adresini gösteriyor
+
+            cout << "a: " << a << endl; //a'nın değeri
+            cout << "pp: " << pp << endl; //p'nin adresi (fakat a'yı işaret edecektir)
+            cout << "*pp: " << *pp << endl; //p'nin işaret ettiği yerdeki değer
+            cout << "&a: " << &a << endl; //a'nın adresi
+            cout << "&pp: " << &pp << endl; //p'nin kendi adresi
+
+            cout << "dizilerin gostericiler ile kullanilmasi" << endl;
+
+            int z[3]={1,4,8};
+
+            int *p;
+            p=&z[0]; //ya da p=z;
+
+            cout << z[2] << endl; // z dizisinin 2.elemanını(3'ü) bastırıyoruz
+
+            cout << p[2] << endl;
+            /*aslında p bir diziye sahip değilken
+             * z'yi işaret ettiği için
+             * z'nin 2.elemanını basıyor
+             * */
+
+            p[1]=6; //p dolayısıyla z dizini işaret ettiği için, onun 1.elemanını 8 olarak güncelleyecektir
+
+            cout << z[1] << endl;
+
+            cout << "dinamik hafiza yontemi - malloc" << endl;
+
+            int *P= (int*)malloc(sizeof(int)*3);
+            P[2]=3;
+            cout << P[2] << endl;
+
+            int *q= (int*)malloc(sizeof(int)*3);
+            *q= 50;
+            f(q);
+
+            cout << *q << endl;
+
+            cout << endl << "Programdan çıkılsınmı? (E/H) :";
+            cin >> exit;
+            if (exit == 'e' || exit == 'E')
+            {
+                break;
+            }
+            #ifdef WIN32
+                        system("cls");
+            #endif
+
+            #ifdef linux
+                        system("clear");
+            #endif
+
+
+        }
+        else if(secim == 'm' || secim =='M'){
+
+            cout << "saat donusumleri" << endl;
+
+            cout << "lutfen 12'lik sistemde bir saat giriniz" << endl;
+
+            char s[11]; //boyutunu belirtiyoruz
+            cin >> s; //kullanıcıdan alıyoruz
+
+            if (s[8]=='P') { //8.karaktere denk geldiği için
+                char x[3]; //girilen verilerin ilk üç değerini alıyoruz (değiştirebilmek için)
+                x[0]=s[0];
+                x[1]=s[1];
+                x[2]= '\0'; //bir dizgi olduğu için son karakteri end of string omalı
+
+                /*eğer aşağıdaki saat hesaplamasını yapmak
+                 * istemiyorsanız atoi kodunu kullanabilirisiniz kolay yolu olarak
+                int saat=0;
+                saat += (x[0]-48) *10;
+                saat += x[1]-48;
+                */
+
+                int saat= atoi(x); // karakter dizisini alıp integer değere çeviriyor
+                saat += 12;
+
+                s[0]=(char)48 + saat/10;
+                s[1]=(char)48 + saat%10;
+
+
+                s[8]='\0'; // P ve geri kalan karakterler basılmayacaktır
+
+                cout << "yeni saat: " << s << endl;
+            }
+            else { //geriye kalan tek durum else olduğu için else yapısını kullandık
+
+                s[8]='\0'; // A ve geri kalan karakterler basılmayacaktır
+                cout << "yeni saat: " << s << endl;
+            }
+
+            cout << "palindrome" << endl;
+            cout << "lutfen bir kelime giriniz.." << endl;
+
+            char c[100]; //100 karakterlik bir boyut ayırdık
+            cin >> c;
+
+            char *p,*q;
+            p=c; //dizginin en başından başlaması için
+            q=c; /* dizginin en sonundan başlaması için bir
+     * while döngüsü atayacağız ve end of string kodunu
+     * görene kadar ilerlemesini isteyeceğiz.
+     * Böylece q işaretçisi kelimenin en sonundan başlamış olacaktır */
+
+            while(*q!='\0') { //q'nun gösterdiği yerdeki değere bakmamız gerektiği için işaretçi kullanıyoruz
+                q++;
+            }
+            q--; //en son eleman \0 olduğu için bir geri gelmesini sağlıyoruz
+
+            bool palindrome=true; //ilk başta tüm kelimeleri palindrome kabul ediyoruz
+
+            while (q>p) { //p ve q birbirine eşit olmadığı zaman (ortada karşılaşmadıklarında)
+
+                if(*p!=*q) { //işaretçi olmalarının sebebi, oradaki değerleri karşılaştırmak istememiz
+                    palindrome=false; //eğer bir tane bile farklı eleman bulursak false döndürüyoruz
+                }
+                p++; //diğer harflere geçmeleri için
+                q--;
+            }
+            //sonuçları ekrana yansıtmak için
+            if (palindrome)
+                cout << "girilen kelime bir palindrome'dur" << endl;
+            else
+                cout << "girilen kelime bir palindrome degildir" << endl;
+
+
+            cout << endl << "Programdan çıkılsınmı? (E/H) :";
+            cin >> exit;
+            if (exit == 'e' || exit == 'E')
+            {
+                break;
+            }
+#ifdef WIN32
+            system("cls");
+#endif
+
+#ifdef linux
+            system("clear");
+#endif
+
+
+
+
+
+
+        }
+
+
+        else if (secim == 'n' || secim == 'N' ){
+
+
+            //dosyayı yazma kismi
+            ofstream dosya;
+            dosya.open ("deneme.txt");
+
+            if(dosya.is_open()){ //dosyanın açılabilirliğini kontrol ediyor.
+                dosya << "yazilim /n";
+                dosya.close();
+            }
+            else {
+
+                cout << "dosya acilmiyor" << endl;
+            }
+
+            //dosyayı okuma kısmı
+            string satir;
+
+            ifstream dosya2 ("deneme.txt");
+            if (dosya2.is_open()) {
+
+                while (getline(dosya2, satir)) { //fstream kaynaklı bir koddur.
+
+                    cout << satir << endl;
+                }
+                dosya2.close();
+            }
+
+            cout << endl << "Programdan çıkılsınmı? (E/H) :";
+            cin >> exit;
+            if (exit == 'e' || exit == 'E')
+            {
+                break;
+            }
+#ifdef WIN32
+            system("cls");
+#endif
+
+#ifdef linux
+            system("clear");
+#endif
+
+
+
+        }
+
 
 
         // yeni program alanı
@@ -399,6 +647,7 @@ int main()
 
 
     }
+
 
 
 
